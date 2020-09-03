@@ -13,6 +13,11 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
+import AddTutorial from "./components/add-tutorial.component";
+import Tutorial from "./components/tutorial.component";
+import TutorialsList from "./components/tutorials-list.component";
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +54,7 @@ class App extends Component {
         <div>
 
           <nav className="navbar navbar-expand navbar-dark bg-dark">
-            
+
             <div className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link to={"/home"} className="nav-link">
@@ -70,6 +75,30 @@ class App extends Component {
                   <Link to={"/admin"} className="nav-link">
                     Admin Board
                   </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/tutorials"} className="nav-link">
+                    report
+                </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/tutorials"} className="nav-link">
+                    Tutorials
+                </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/add"} className="nav-link">
+                    Add
+                </Link>
                 </li>
               )}
 
@@ -96,20 +125,20 @@ class App extends Component {
                 </li>
               </div>
             ) : (
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                    Login
+                <div className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <Link to={"/login"} className="nav-link">
+                      Login
                   </Link>
-                </li>
+                  </li>
 
-                <li className="nav-item">
-                  <Link to={"/register"} className="nav-link">
-                    Sign Up
+                  <li className="nav-item">
+                    <Link to={"/register"} className="nav-link">
+                      Sign Up
                   </Link>
-                </li>
-              </div>
-            )}
+                  </li>
+                </div>
+              )}
           </nav>
 
           <div className="container mt-3">
@@ -121,6 +150,9 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
+              <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
+              <Route exact path="/add" component={AddTutorial} />
+              <Route path="/tutorials/:id" component={Tutorial} />
             </Switch>
           </div>
         </div>
