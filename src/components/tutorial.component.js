@@ -62,6 +62,7 @@ export default class Tutorial extends Component {
       })
       .catch(e => {
         console.log(e);
+        this.props.history.push("/login");
       });
   }
 

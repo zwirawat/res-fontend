@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import UserService from "../services/user.service";
 
 export default class BoardUser extends Component {
@@ -11,6 +11,8 @@ export default class BoardUser extends Component {
     };
   }
 
+
+
   componentDidMount() {
     UserService.getUserBoard().then(
       response => {
@@ -19,14 +21,7 @@ export default class BoardUser extends Component {
         });
       },
       error => {
-        this.setState({
-          content:
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString()
-        });
+        this.props.history.push("/login");
       }
     );
   }

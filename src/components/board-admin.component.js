@@ -19,14 +19,7 @@ export default class BoardAdmin extends Component {
         });
       },
       error => {
-        this.setState({
-          content:
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString()
-        });
+        this.props.history.push("/login");
       }
     );
   }

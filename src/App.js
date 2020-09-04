@@ -150,7 +150,7 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
-              <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
+              <Route exact path={["/tutorials"]} component={TutorialsList} />
               <Route exact path="/add" component={AddTutorial} />
               <Route path="/tutorials/:id" component={Tutorial} />
             </Switch>

@@ -45,6 +45,7 @@ export default class TutorialsList extends Component {
       })
       .catch(e => {
         console.log(e);
+        this.props.history.push("/login");
       });
   }
 
